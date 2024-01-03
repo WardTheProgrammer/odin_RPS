@@ -20,12 +20,15 @@ let computerSelection = getComputerChoice();
 
 function generateWinner(playerSelection, computerSelection) {
     if (playerSelection.toLowerCase() === computerSelection) {
+        console.log("It is a tie!");
         computerSelection = getComputerChoice();
         generateWinner(playerSelection, computerSelection);
     } else if (playerSelection.toLowerCase() === "rock" && computerSelection === "scissors" || playerSelection.toLowerCase() === "paper" && computerSelection === "rock" || playerSelection.toLowerCase() === "scissors" && computerSelection === "paper") {
         console.log(`You win! ${playerSelection.toLowerCase()} beats ${computerSelection}`);
+        return true;
     } else if (playerSelection.toLowerCase() === "rock" && computerSelection === "paper" || playerSelection.toLowerCase() === "paper" && computerSelection === "scissors" || playerSelection.toLowerCase() === "scissors" && computerSelection === "rock") {
         console.log(`You lose! ${computerSelection.toLowerCase()} beats ${playerSelection}`);
+        return false;
     } else {
         console.log("Something went wrong!");
     };
