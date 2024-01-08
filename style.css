@@ -7,13 +7,7 @@ body {
     font-size: 50px;
     font-family: Fantasy;
   }
-  
-  h2 {
-    font-size: 36px;
-    font-family: monospace;
-    margin: 10px;
-  }
-  
+    
   .buttons {
     margin-left: 20px;
     display: flex;
@@ -35,7 +29,6 @@ body {
       color: #ffffff;
     }
     
-  
   .left {
     float: left;
     margin-left: 12vw;
