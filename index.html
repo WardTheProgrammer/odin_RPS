@@ -5,16 +5,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rock Paper Scissors</title>
     </head>
-    <body>
-        <button class="btn" id="Rock">Rock</button>
-        <button class="btn" id="Paper">Paper</button>
-        <button class="btn" id="Scissors">Scissors</button>
-        <div>
-            <h1>Rock Paper Scissors</h1>
-            <h2 class="round"></h2>
-            <h3 class="game"></h3>
-        </div>
-    </body>
-    <script type="text/javascript" src="RPS.js"></script>
-</html>
 
+    <body>
+        <h1>Rock Paper Scissors</h1>
+        <h2>What do you choose?</h2>
+        <div class="buttons">
+            <button class="btn" id="btn1">Rock</button>
+            <button class="btn" id="btn2">Paper</button>
+            <button class="btn" id="btn3">Scissors</button>
+        </div>
+        <div class="textbox">
+            <h3 class="explanation">Rock beats Scissors, Scissors beats Paper, Paper beats Rock, </h3>
+            <p class="score">The current score is 0 to 0</p>
+        </div>
+        <button onClick="window.location.href=window.location.href">Restart Game</button>
+        <script src="RPS.js"></script>
+    </body>
+</html>
