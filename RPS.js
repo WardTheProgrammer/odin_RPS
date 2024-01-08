@@ -1,7 +1,6 @@
 const buttons = document.querySelectorAll('.btn');
-const resultText = document.querySelector('.explanation');
-const scoreText = document.querySelector('.score');
-const gameText = document.querySelector('h2');
+const scoreCount = document.querySelector('.score');
+const resultText = document.querySelector('.resultText');
 let playerScore = 0;
 let computerScore = 0;
 
@@ -22,50 +21,50 @@ function generateRoundWinner(playerChoice, computerChoice) {
         case 'rock':
             switch (computerChoice) {
                 case 'rock':
-                    return 'You tied!';
+                    return 'You tied this round! You both chose Rock';
                 case 'paper':
-                    return 'You lost! Paper beats Rock';
+                    return 'You lost this round! Paper beats Rock';
                 case 'scissors':
-                    return 'You won! Rock beats Scissors';
+                    return 'You won this round! Rock beats Scissors';
             }
         case 'paper':
             switch (computerChoice) {
                 case 'rock':
-                    return 'You won! Paper beats Rock';
+                    return 'You won this round! Paper beats Rock';
                 case 'paper':
-                    return 'You tied!';
+                    return 'You tied this round! You both chose Paper';
                 case 'scissors':
-                    return 'You lost! Scissors beats Paper';
+                    return 'You lost this round! Scissors beats Paper';
             }
         case 'scissors':
             switch (computerChoice) {
                 case 'rock':
-                    return 'You lost! Rock beats Scissors';
+                    return 'You lost this round! Rock beats Scissors';
                 case 'paper':
-                    return 'You won! Scissors beats Paper';
+                    return 'You won this round! Scissors beats Paper';
                 case 'scissors':
-                    return 'You tied!';
+                    return 'You tied! You both chose Scissors';
             }
     }
 }
 
 function updateScore() {
-    if (resultText.textContent.includes("You won!")) {
+    if (resultText.textContent.includes("You won this round!")) {
         playerScore++;
-        scoreText.textContent = `The current score is ${playerScore} to ${computerScore}`;
-    } else if (resultText.textContent.includes("You lost!")) {
+        scoreCount.textContent = `${playerScore} - ${computerScore}`;
+    } else if (resultText.textContent.includes("You lost this round!")) {
         computerScore++;
-        scoreText.textContent = `The current score is ${playerScore} to ${computerScore}`;
+        scoreCount.textContent = `${playerScore} - ${computerScore}`;
     } else {
-        scoreText.textContent = `The current score is ${playerScore} to ${computerScore}`;
+        scoreCount.textContent = `${playerScore} - ${computerScore}`;
     }
 }
 
 function generateGameWinner() {
     if (playerScore == 5) {
-        gameText.textContent = `You won the game against the computer!`;
+        resultText.textContent = `You won the game against the computer!`;
     } else if (computerScore == 5) {
-        gameText.textContent = `You lost the game against the computer!`;
+        resultText.textContent = `You lost the game against the computer!`;
     }
 }
 
