@@ -1,3 +1,12 @@
+let playerScore = 0
+let computerScore = 0
+
+const btn1 = document.getElementById("Rock");
+const btn2 = document.getElementById("Paper");
+const btn3 = document.getElementById("Scissors");
+
+
+
 function getComputerChoice() {
     randumNum = Math.floor(Math.random()*3)
     switch (randumNum) {
@@ -12,55 +21,57 @@ function getComputerChoice() {
             break;
         default:
             return "rock";
-    };
-};
+    }
+}
 
 
 
-function generateWinner(i) {
-    let playerSelection = prompt(`Round ${i+1}:  Rock, Paper, Scissors, Shoot:`);
+function generateWinner(playerSelection) {
     let computerSelection = getComputerChoice();
-    if (playerSelection.toLowerCase() == computerSelection) {
+    if (playerSelection == computerSelection) {
         console.log("It is a tie!");
-        return generateWinner();
-    } else if (playerSelection.toLowerCase() == "rock" && computerSelection === "scissors" || playerSelection.toLowerCase() === "paper" && computerSelection === "rock" || playerSelection.toLowerCase() === "scissors" && computerSelection === "paper") {
-    console.log(`You win the round! ${playerSelection.toLowerCase()} beats ${computerSelection}`);
-    return true;
-    } else if (playerSelection.toLowerCase() == "rock" && computerSelection === "paper" || playerSelection.toLowerCase() === "paper" && computerSelection === "scissors" || playerSelection.toLowerCase() === "scissors" && computerSelection === "rock") {
-    console.log(`You lose the round! ${computerSelection} beats ${playerSelection.toLowerCase()}`);
-    return false;
+        return null;
+    } else if (
+        playerSelection == "rock" 
+        && computerSelection === "scissors" 
+        || playerSelection === "paper" 
+        && computerSelection === "rock" 
+        || playerSelection === "scissors" 
+        && computerSelection === "paper"
+        ) {
+        console.log(`You win the round! ${playerSelection} beats ${computerSelection}`);
+        playerScore += 1;
+    } else if (
+        playerSelection == "rock" 
+        && computerSelection === "paper" 
+        || playerSelection === "paper" 
+        && computerSelection === "scissors" 
+        || playerSelection === "scissors" 
+        && computerSelection === "rock"
+    ) {
+        console.log(`You lose the round! ${computerSelection} beats ${playerSelection}`);
+        computerScore += 1;
     } else {
         console.log("Something went wrong!");
-        let playerSelection = prompt(`Round ${i+1}:  Rock, Paper, Scissors, Shoot:`);
-        let computerSelection = getComputerChoice();
-        return generateWinner();
-    };
-};
+    }
+}
 
 function game() {
-    let playerScore = 0
-    let computerScore = 0
-    for (let i = 0; i < 5; i++) {
-        let result = generateWinner(i);
-        if (result === true) {
-            playerScore += 1;
-        } else if (result === false) {
-            computerScore += 1;
-        } else {
-            console.log("Something went wrong!"); 
-        };
-    };
-    if (playerScore > computerScore) {
+    playerScore = 0
+    computerScore = 0
+    while (playerScore < 5 && computerScore < 5) {
+        btn1.addEventListener("click", () => generateWinner("rock"));
+        btn2.addEventListener("click", () => generateWinner("paper"));
+        btn3.addEventListener("click", () => generateWinner("scissors"));
+    }
+    if (playerScore == 5) {
         console.log("You win the game!");
         console.log(`Your points: ${playerScore}`);
         console.log(`The computers points: ${computerScore}`);
-    } else if (playerScore < computerScore) {
+    } else if (computerScore == 5) {
         console.log("You lose the game!");
         console.log(`Your points: ${playerScore}`);
         console.log(`The computers points: ${computerScore}`);
-    } else {
-        console.log("Something went wrong!");
-    };
-};
-
+    }
+}
 game();
