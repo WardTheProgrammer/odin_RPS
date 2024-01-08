@@ -72,7 +72,7 @@ function game(event) {
     if (playerScore === 5 || computerScore === 5) return;
     let playerChoice = event.target.innerText.toLowerCase();
     let computerChoice = getComputerChoice();
-    resultText.textContent = generateRoundWinner(playerChoice, computerChoice);
+    resultText.textContent = `Round ${playerScore + computerScore}: ` + generateRoundWinner(playerChoice, computerChoice);
     updateScore();
     generateGameWinner();
 }
