@@ -5,15 +5,9 @@ let playerScore = 0;
 let computerScore = 0;
 
 function getComputerChoice() {
+    const randArray = ["rock", "paper", "scissors"];
     const randNum = Math.floor(Math.random() * 3);
-    switch (randNum) {
-        case 0:
-            return 'rock';
-        case 1:
-            return 'paper';
-        case 2:
-            return 'scissors';
-    }
+    return randArray[randNum];
 }
 
 function generateRoundWinner(playerChoice, computerChoice) {
